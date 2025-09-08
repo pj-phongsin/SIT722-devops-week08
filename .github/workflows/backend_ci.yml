@@ -1,5 +1,5 @@
 # week08/.github/workflows/backend_ci.yml
-# GitHub Actions Workflow for Backend CI
+# GitHub Actions Workflow for Backend CI test
 
 name: Backend CI - Test, Build and Push Images to ACR
 
