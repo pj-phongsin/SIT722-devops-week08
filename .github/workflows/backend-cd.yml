@@ -6,15 +6,15 @@ on:
       aks_cluster_name:
         description: "Name of the AKS Cluster to deploy to"
         required: true
-        default: "<aks_cluster_name>"
+        default: "pjsit722week08aks"
       aks_resource_group:
         description: "Resource Group of the AKS Cluster"
         required: true
-        default: "<resource_group_name>"
+        default: "sit722week08"
       aks_acr_name:
         description: "Name of ACR"
         required: true
-        default: "<acr_name>"
+        default: "pjsit722week08acr"
 
 jobs:
   deploy_backend:
@@ -35,10 +35,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-      - name: Set correct Azure subscription
-        run: |
-          az account set --subscription "Azure for Students"
-
       - name: Set Kubernetes context (get AKS credentials)
         run: |
           az aks get-credentials --resource-group ${{ github.event.inputs.aks_resource_group }} --name ${{ github.event.inputs.aks_cluster_name }} --overwrite-existing
@@ -51,6 +47,10 @@ jobs:
         run: |
           echo "Deploying backend infrastructure..."
           cd k8s/
+
+          echo "Injecting real secret key into template..."
+          sed -i "s|UExBQ0VIT0xERVI=|${{ secrets.AZURE_KEY_B64 }}|g" secrets.yaml
+
           kubectl apply -f configmaps.yaml
           kubectl apply -f secrets.yaml
           kubectl apply -f product-db.yaml
