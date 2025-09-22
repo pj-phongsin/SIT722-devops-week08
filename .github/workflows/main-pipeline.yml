@@ -44,6 +44,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: List files in the repository
+        run: ls -R
+
       - name: Set AKS Context
         uses: azure/aks-set-context@v3
         with:
