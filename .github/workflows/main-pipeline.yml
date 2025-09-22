@@ -64,9 +64,9 @@ jobs:
 
       - name: Update Image Tags in Kubernetes Manifests
         run: |
-          sed -i 's|image:.*product-service:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:${{ github.sha }}|' k8s/product-service.yml
-          sed -i 's|image:.*order-service:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:${{ github.sha }}|' k8s/order-service.yml
-          sed -i 's|image:.*frontend:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }}|' k8s/frontend.yml
+          sed -i 's|image:.*product-service:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:${{ github.sha }}|' k8s/product-service.yaml
+          sed -i 's|image:.*order-service:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:${{ github.sha }}|' k8s/order-service.yaml
+          sed -i 's|image:.*frontend:.*|image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }}|' k8s/frontend.yaml
 
       - name: Deploy All Manifests to AKS
         run: |
