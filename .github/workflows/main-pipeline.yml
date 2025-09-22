@@ -29,8 +29,8 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./product-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./order-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./backend/product-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./backend/order-service
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest ./frontend
 
   deploy:
