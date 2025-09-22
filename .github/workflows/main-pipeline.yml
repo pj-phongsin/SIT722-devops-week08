@@ -55,9 +55,9 @@ jobs:
 
       - name: Build and Push Docker Images
         run: |
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:${{ github.sha }} ./src/product-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:${{ github.sha }} ./src/order-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }} ./src/frontend
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:${{ github.sha }} ./backend/product_service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:${{ github.sha }} ./backend/order_service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }} ./frontend
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:${{ github.sha }}
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:${{ github.sha }}
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }}
