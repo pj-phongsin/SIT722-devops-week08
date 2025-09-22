@@ -24,13 +24,10 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: List files in the repository
-        run: ls -R
-
       - name: Build Docker Images
         run: |
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./backend/product-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./backend/order-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./backend/product_service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./backend/order_service
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest ./frontend
 
   deploy:
