@@ -24,6 +24,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: List files in the repository
+        run: ls -R
+
       - name: Build Docker Images
         run: |
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./product-service
@@ -43,9 +46,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: List files in the repository
-        run: ls -R
 
       - name: Set AKS Context
         uses: azure/aks-set-context@v3
