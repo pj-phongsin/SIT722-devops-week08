@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: e-commerce-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /products(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service-w08e1
+                port:
+                  number: 8000
+          - path: /orders(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service-w08e1
+                port:
+                  number: 8001
+          - path: /()(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-w08e1
+                port:
+                  number: 80
