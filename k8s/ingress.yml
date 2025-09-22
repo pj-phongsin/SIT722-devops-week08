@@ -10,21 +10,21 @@ spec:
     - http:
         paths:
           - path: /products(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: product-service-w08e1
                 port:
                   number: 8000
           - path: /orders(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: order-service-w08e1
                 port:
                   number: 8001
           - path: /()(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: frontend-w08e1
