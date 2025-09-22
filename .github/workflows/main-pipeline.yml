@@ -26,9 +26,9 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./src/product-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./src/order-service
-          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest ./src/frontend
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/product-service:latest ./product-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/order-service:latest ./order-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest ./frontend
 
   deploy:
     name: Deploy to AKS
